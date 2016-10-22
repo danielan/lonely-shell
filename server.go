@@ -10,11 +10,11 @@ import (
 func main() {
     http.HandleFunc("/static/", func (w http.ResponseWriter, r *http.Request) {
         if r.Method == "POST" {
-            fmt.Println("Got post!")
+            fmt.Println("Results received!")
             content, _ := ioutil.ReadAll(r.Body)
             fmt.Println(string(content))
         } else {
-            fmt.Println("Got connection!")
+            fmt.Println("Connection received, sending command...")
             http.ServeFile(w, r, r.URL.Path[1:])
         }
     })
